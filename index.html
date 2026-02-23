@@ -411,6 +411,11 @@ body.light .theme-toggle {
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
+
+.sdfgs {
+    font-weight: bold;
+    white-space: nowrap;
+}
 </style>
 </head>
 
@@ -439,7 +444,9 @@ body.light .theme-toggle {
 
     <div class="header">
         <img src="muy/fort.png" alt="Аватар канала" class="server-icon">
-        <div class="server-name"><div class="sdfg">☤</div> Боевая комната <div class="sdfg">☤</div></div>
+        <div class="server-name">
+    <span class="sdfg">☤</span> <span class="sdfgs"></span> <span class="sdfg">☤</span>
+</div>
         <div id="onlineCount" style="opacity:1; transition: opacity 0.3s;">
             Онлайн: ...
         </div>
@@ -541,46 +548,36 @@ loadMembers();
 setInterval(loadMembers, 30000);
 
 document.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("bgMusic");
-    const toggle = document.getElementById("musicToggle");
+    const text = "Боевая комната";
+    const el = document.querySelector(".sdfgs");
 
-    if (!music || !toggle) return;
+    let index = 0;
+    let forward = true;
 
-    music.volume = 0.2;
-    let isPlaying = true;
-
-    const updateButton = () => {
-        toggle.textContent = isPlaying ? "🔊 Выключить звук" : "🔈 Включить звук";
-    };
-
-    toggle.addEventListener("click", () => {
-        if (isPlaying) {
-            music.pause();
+    function animate() {
+        if (forward) {
+            el.textContent = text.substring(0, index);
+            index++;
+            if (index > text.length) {
+                forward = false;
+                setTimeout(animate, 1000);
+                return;
+            }
         } else {
-            music.play().catch(() => {});
+            el.textContent = text.substring(0, index);
+            index--;
+            if (index < 0) {
+                forward = true;
+                setTimeout(animate, 500);
+                return;
+            }
         }
-        isPlaying = !isPlaying;
-        updateButton();
-    });
 
-    // если музыка закончилась — перезапустить (если включена)
-    music.addEventListener("ended", () => {
-        if (isPlaying) {
-            music.currentTime = 0;
-            music.play().catch(() => {});
-        }
-    });
+        setTimeout(animate, forward ? 120 : 80);
+    }
 
-    // защита: если остановилась — перезапустить
-    setInterval(() => {
-        if (isPlaying && music.paused) {
-            music.play().catch(() => {});
-        }
-    }, 3000);
-
-    updateButton();
-});
-</script>
+    animate();
+});</script>
 
 <audio id="bgMusic" autoplay loop>
     <source src="muy/fons.mp3" type="audio/mpeg">
