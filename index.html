@@ -382,6 +382,35 @@ body.light .theme-toggle {
         text-shadow: 0 0 10px #000, 0 0 20px #333;
     }
 }
+
+.sdfg {
+    font-weight: bold;
+    animation: sdfgGlow 2s infinite alternate, sdfgPulse 1.5s infinite;
+    text-shadow: 0 0 2px #8a2be2, 0 0 6px #a855f7;
+}
+
+/* фиолетовое мерцание */
+@keyframes sdfgGlow {
+    0% {
+        color: #8a2be2;
+        text-shadow: 0 0 2px #8a2be2, 0 0 6px #a855f7;
+    }
+    50% {
+        color: #c084fc;
+        text-shadow: 0 0 6px #8a2be2, 0 0 12px #d8b4fe;
+    }
+    100% {
+        color: #8a2be2;
+        text-shadow: 0 0 2px #8a2be2, 0 0 6px #a855f7;
+    }
+}
+
+/* пульсация (увеличение/уменьшение) */
+@keyframes sdfgPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 </style>
 </head>
 
@@ -410,7 +439,7 @@ body.light .theme-toggle {
 
     <div class="header">
         <img src="muy/fort.png" alt="Аватар канала" class="server-icon">
-        <div class="server-name">🎮 Игровая комната 🎮</div>
+        <div class="server-name"><div class="sdfg">☤</div> Боевая комната <div class="sdfg">☤</div></div>
         <div id="onlineCount" style="opacity:1; transition: opacity 0.3s;">
             Онлайн: ...
         </div>
