@@ -24,6 +24,34 @@ body.light {
     background: #f0f0f0;
 }
 
+#musicToggle {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #5865F2;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#musicToggle:hover {
+    background: #4752c4;
+    transform: scale(1.03);
+}
+
+body.light #musicToggle {
+    background: #444;
+    color: white;
+}
+
+body.light #musicToggle:hover {
+    background: #333;
+}
+
 /* === Боковая панель === */
 .sidebar {
     width: 400px;
@@ -372,6 +400,9 @@ body.light .theme-toggle {
         <tr><td class="ofii">Офицер штаба</td><td class="ofiix">Death_to_machines</td></tr>
         <tr><td class="zamkomand">Командир подразделения</td><td>PHANTOM_STEAL</td></tr>
     </table>
+    <button id="musicToggle" class="join-btn" style="margin-top:10px;">
+    🔊 Выключить звук
+    </button>
 </div>
 
 <!-- Карточка -->
@@ -484,11 +515,43 @@ setInterval(loadMembers, 30000);
 
 document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("bgMusic");
-    if (music) {
-        music.play().catch(() => {
-            console.warn("Автозапуск заблокирован браузером");
-        });
-    }
+    const toggle = document.getElementById("musicToggle");
+
+    if (!music || !toggle) return;
+
+    music.volume = 0.2;
+    let isPlaying = true;
+
+    const updateButton = () => {
+        toggle.textContent = isPlaying ? "🔊 Выключить звук" : "🔈 Включить звук";
+    };
+
+    toggle.addEventListener("click", () => {
+        if (isPlaying) {
+            music.pause();
+        } else {
+            music.play().catch(() => {});
+        }
+        isPlaying = !isPlaying;
+        updateButton();
+    });
+
+    // если музыка закончилась — перезапустить (если включена)
+    music.addEventListener("ended", () => {
+        if (isPlaying) {
+            music.currentTime = 0;
+            music.play().catch(() => {});
+        }
+    });
+
+    // защита: если остановилась — перезапустить
+    setInterval(() => {
+        if (isPlaying && music.paused) {
+            music.play().catch(() => {});
+        }
+    }, 3000);
+
+    updateButton();
 });
 </script>
 
