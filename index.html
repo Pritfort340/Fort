@@ -13,24 +13,80 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: background 0.3s;
 }
 
+body.light {
+    background: #f0f0f0;
+}
+
+/* === Боковая панель === */
+.sidebar {
+    width: 400px;
+    max-height: 90vh;
+    background: #2b2d31;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+
+body.light .sidebar {
+    background: white;
+    color: #222;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.sidebar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sidebar td {
+    padding: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    word-break: break-word;
+}
+
+body.light .sidebar td {
+    border-bottom: 1px solid #ccc;
+}
+
+/* === Карточка === */
 .card {
     width: 380px;
-    height: 600px;
+    height: 620px;
+    max-height: 90vh;
     background: #2b2d31;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     overflow: hidden;
+    transition: background 0.3s;
+}
+
+body.light .card {
+    background: white;
 }
 
 .header {
     text-align: center;
     padding: 20px;
     color: white;
+}
+
+body.light .header {
+    color: #222;
 }
 
 .server-icon {
@@ -46,10 +102,23 @@ body {
     font-weight: bold;
 }
 
+.search {
+    padding: 10px;
+}
+
+.search input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
 .members {
     flex: 1;
     overflow-y: auto;
-    padding: 15px;
+    padding: 10px;
 }
 
 .members::-webkit-scrollbar {
@@ -63,16 +132,23 @@ body {
 .member {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     background: #232428;
     padding: 8px;
     border-radius: 10px;
     color: white;
-    transition: 0.2s;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+    transition: transform 0.2s;
+}
+
+body.light .member {
+    background: #eee;
+    color: #222;
 }
 
 .member:hover {
-    background: #2f3136;
+    transform: translateX(4px);
 }
 
 .member img {
@@ -99,6 +175,10 @@ body {
     background: #232428;
 }
 
+body.light .footer {
+    background: #ddd;
+}
+
 .join-btn {
     display: block;
     text-align: center;
@@ -109,16 +189,192 @@ body {
     border-radius: 10px;
     font-weight: bold;
     transition: 0.3s;
+    animation: pulse 2s infinite;
 }
 
 .join-btn:hover {
     background: #4752c4;
+}
+
+.theme-toggle {
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+body.light .theme-toggle {
+    color: #222;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+/* === АДАПТИВ === */
+@media (max-width: 800px) {
+    body {
+        flex-direction: column;
+        height: auto;
+    }
+    .sidebar {
+        width: 90%;
+    }
+    .card {
+        width: 90%;
+    }
+}
+
+.komand {
+    font-weight: bold;
+    color: #ff0000;
+    animation: redGlow 2s infinite alternate;
+    text-shadow: 0 0 0px #ff0000, 0 0 2px #ff3333;
+}
+
+/* неоновое красное свечение */
+@keyframes redGlow {
+    0% {
+        color: #ff0000;
+        text-shadow: 0 0 1px #ff0000, 0 0 3px #ff3333;
+    }
+    50% {
+        color: #ff6666;
+        text-shadow: 0 0 4px #ff0000, 0 0 8px #ff3333;
+    }
+    100% {
+        color: #ff0000;
+        text-shadow: 0 0 6px #ff0000, 0 0 12px #ff3333;
+    }
+}
+
+.clansss {
+    font-weight: bold;
+    animation: colorShift 2s infinite alternate;
+}
+
+/* анимация смены цвета */
+@keyframes colorShift {
+    0% { color: #8a2be2; } /* фиолетовый */
+    100% { color: #1e90ff; } /* синий */
+}
+
+.zamss {
+    font-weight: bold;
+    color: #ffd700;
+    animation: goldGlow 2s infinite alternate;
+    text-shadow: 0 0 0px #ffd700, 0 0 2px #ffea00;
+}
+
+/* анимация золотого свечения */
+@keyframes goldGlow {
+    0% {
+        color: #ffd700;
+        text-shadow: 0 0 1px #ffd700, 0 0 3px #ffea00;
+    }
+    50% {
+        color: #fff3a0;
+        text-shadow: 0 0 2px #fff3a0, 0 0 6px #ffd700;
+    }
+    100% {
+        color: #ffd700;
+        text-shadow: 0 0 3px #ffd700, 0 0 9px #ffea00;
+    }
+}
+
+.ofii {
+    font-weight: bold;
+    color: #8a2be2;
+    animation: purpleGlow 2s infinite alternate;
+    text-shadow: 0 0 0px #8a2be2, 0 0 2px #a855f7;
+}
+
+/* фиолетовое неоновое свечение */
+@keyframes purpleGlow {
+    0% {
+        color: #8a2be2;
+        text-shadow: 0 0 1px #8a2be2, 0 0 3px #a855f7;
+    }
+    50% {
+        color: #c084fc;
+        text-shadow: 0 0 4px #8a2be2, 0 0 8px #a855f7;
+    }
+    100% {
+        color: #8a2be2;
+        text-shadow: 0 0 6px #8a2be2, 0 0 12px #a855f7;
+    }
+}
+.zamkomand {
+    font-weight: bold;
+    color: #ffb84d;
+    animation: orangeGlow 2s infinite alternate;
+    text-shadow: 0 0 0px #ffb84d, 0 0 2px #ffd27f;
+}
+
+/* светло-оранжевое неоновое свечение */
+@keyframes orangeGlow {
+    0% {
+        color: #ffb84d;
+        text-shadow: 0 0 1px #ffb84d, 0 0 3px #ffd27f;
+    }
+    50% {
+        color: #ffd27f;
+        text-shadow: 0 0 4px #ffb84d, 0 0 8px #ffe0a3;
+    }
+    100% {
+        color: #ffb84d;
+        text-shadow: 0 0 6px #ffb84d, 0 0 12px #ffd27f;
+    }
+}
+
+.ofiix {
+    font-weight: bold;
+    color: #000;
+    text-decoration: underline;
+    animation: darkGlow 2s infinite alternate;
+    text-shadow: 0 0 2px #000, 0 0 4px #111;
+}
+
+/* анимация чёрного/тёмного сияния */
+@keyframes darkGlow {
+    0% {
+        text-shadow: 0 0 2px #000, 0 0 4px #111;
+    }
+    50% {
+        text-shadow: 0 0 6px #000, 0 0 12px #222;
+    }
+    100% {
+        text-shadow: 0 0 10px #000, 0 0 20px #333;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- Боковая панель -->
+<div class="sidebar">
+    <div td class="clansss"><h2>🛡️ Клан [_FORT]</div>
+    <table>
+        <tr><td class="komand">Командующий</td><td td class="ofiix">Nastya1tsg</td></tr>
+        <tr><td class="zamss">Зам. командующего</td><td>Mr_Pr0r0k</td></tr>
+        <tr><td class="zamss">Зам. командующего</td><td>mistertvister777</td</tr>
+        <tr><td class="zamss">Зам. командующего</td><td>hunter___2002</td></tr>
+        <tr><td class="zamss">Зам. командующего</td><td>Rm_K80</td></tr>
+        <tr><td class="zamss">Зам. командующего</td><td>buburuzax_3981949</td></tr>
+        <tr><td class="ofii">Офицер штаба</td><td class="ofiix">Death_to_machines</td></tr>
+        <tr><td class="zamkomand">Командир подразделения</td><td>PHANTOM_STEAL</td></tr>
+    </table>
+</div>
+
+<!-- Карточка -->
 <div class="card">
 
     <div class="header">
@@ -126,6 +382,13 @@ body {
             src="https://i.ibb.co/bMC6Xq9b/2026-02-23-124622.png"
             class="server-icon">
         <div class="server-name">🎮 Игровая комната 🎮</div>
+        <div id="onlineCount" style="opacity:1; transition: opacity 0.3s;">
+            Онлайн: ...
+        </div>
+    </div>
+
+    <div class="search">
+        <input id="search" placeholder="Поиск участника...">
     </div>
 
     <div class="members" id="membersList">
@@ -136,6 +399,9 @@ body {
         <a id="joinBtn" class="join-btn" target="_blank">
             Присоединиться
         </a>
+        <div class="theme-toggle" id="themeToggle">
+            Переключить тему
+        </div>
     </div>
 
 </div>
@@ -144,42 +410,90 @@ body {
 const serverId = "1432796984078499922";
 const apiUrl = `https://discord.com/api/guilds/${serverId}/widget.json`;
 
+let membersCache = [];
+
+// Загрузка участников
 async function loadMembers() {
     try {
         const res = await fetch(apiUrl);
-
         if (!res.ok) throw new Error("widget недоступен");
 
         const data = await res.json();
-
         document.getElementById("joinBtn").href = data.instant_invite || "#";
 
-        const membersList = document.getElementById("membersList");
-        membersList.innerHTML = "";
+        membersCache = data.members || [];
+        renderMembers(membersCache);
 
-        (data.members || []).forEach(member => {
-            const div = document.createElement("div");
-            div.className = "member";
+        const counter = document.getElementById("onlineCount");
+        counter.style.opacity = 0;
 
-            div.innerHTML = `
-                <img src="${member.avatar_url || ''}">
-                ${member.username || 'Неизвестный'}
-                <div class="status ${member.status || 'offline'}"></div>
-            `;
-
-            membersList.appendChild(div);
-        });
+        setTimeout(() => {
+            counter.textContent = "Онлайн: " + membersCache.length;
+            counter.style.opacity = 1;
+        }, 200);
 
     } catch (e) {
         console.warn(e);
         document.getElementById("membersList").innerHTML =
-            "Виджет недоступен. Проверьте настройку виджета в Discord.";
+            "Виджет недоступен. Проверьте настройку в Discord.";
     }
 }
 
+// Рендер участников
+function renderMembers(list) {
+    const membersList = document.getElementById("membersList");
+    membersList.innerHTML = "";
+
+    list.forEach((member, index) => {
+        const div = document.createElement("div");
+        div.className = "member";
+        div.style.animationDelay = `${index * 0.05}s`;
+
+        div.innerHTML = `
+            <img src="${member.avatar_url || 'https://i.ibb.co/0Y4M0Kq/default.png'}">
+            ${member.username || 'Неизвестный'}
+            <div class="status ${member.status || 'offline'}"></div>
+        `;
+
+        membersList.appendChild(div);
+    });
+}
+
+// Поиск
+document.getElementById("search").addEventListener("input", function() {
+    const term = this.value.toLowerCase();
+    const filtered = membersCache.filter(m =>
+        (m.username || '').toLowerCase().includes(term)
+    );
+    renderMembers(filtered);
+});
+
+// Тема
+document.getElementById("themeToggle").onclick = () => {
+    document.body.classList.toggle("light");
+};
+
+// Анимация кнопки
+const join = document.querySelector(".join-btn");
+join.addEventListener("mouseenter", () => join.style.transform = "scale(1.04)");
+join.addEventListener("mouseleave", () => join.style.transform = "scale(1)");
+
+// Старт
 loadMembers();
 setInterval(loadMembers, 30000);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("bgMusic");
+    if (music) {
+        music.play().catch(() => {
+            console.warn("Автозапуск заблокирован браузером");
+        });
+    }
+});
 </script>
 
+<audio id="bgMusic" autoplay loop>
+    <source src="muy/fons.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
