@@ -578,22 +578,28 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = 0;
     let forward = true;
 
+    el.textContent = ""; // очистка, чтобы не мигало
+
     function animate() {
         if (forward) {
-            el.textContent = text.slice(0, index++);
+            el.textContent = text.slice(0, index);
+            index++;
             if (index > text.length) {
                 forward = false;
                 setTimeout(animate, 1000);
                 return;
             }
         } else {
-            el.textContent = text.slice(0, index--);
+            el.textContent = text.slice(0, index);
+            index--;
             if (index < 0) {
                 forward = true;
+                index = 0;
                 setTimeout(animate, 500);
                 return;
             }
         }
+
         setTimeout(animate, forward ? 150 : 100);
     }
 
