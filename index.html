@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Игровая комната</title>
+<title>Ігрова кімната</title>
 
 <style>
 body {
@@ -52,7 +52,7 @@ body.light #musicToggle:hover {
     background: #333;
 }
 
-/* === Боковая панель === */
+/* === Бічна панель === */
 .sidebar {
     width: 400px;
     max-height: 90vh;
@@ -89,7 +89,7 @@ body.light .sidebar td {
     border-bottom: 1px solid #ccc;
 }
 
-/* === Карточка === */
+/* === Картка === */
 .card {
     width: 380px;
     height: 620px;
@@ -267,7 +267,7 @@ body.light .theme-toggle {
     text-shadow: 0 0 0px #ff0000, 0 0 2px #ff3333;
 }
 
-/* неоновое красное свечение */
+/* неонове червоне сяйво */
 @keyframes redGlow {
     0% {
         color: #ff0000;
@@ -288,10 +288,10 @@ body.light .theme-toggle {
     animation: colorShift 2s infinite alternate;
 }
 
-/* анимация смены цвета */
+/* анімація зміни кольору */
 @keyframes colorShift {
-    0% { color: #8a2be2; } /* фиолетовый */
-    100% { color: #1e90ff; } /* синий */
+    0% { color: #8a2be2; }
+    100% { color: #1e90ff; }
 }
 
 .zamss {
@@ -301,7 +301,6 @@ body.light .theme-toggle {
     text-shadow: 0 0 0px #ffd700, 0 0 2px #ffea00;
 }
 
-/* анимация золотого свечения */
 @keyframes goldGlow {
     0% {
         color: #ffd700;
@@ -324,7 +323,6 @@ body.light .theme-toggle {
     text-shadow: 0 0 0px #8a2be2, 0 0 2px #a855f7;
 }
 
-/* фиолетовое неоновое свечение */
 @keyframes purpleGlow {
     0% {
         color: #8a2be2;
@@ -346,7 +344,6 @@ body.light .theme-toggle {
     text-shadow: 0 0 0px #ffb84d, 0 0 2px #ffd27f;
 }
 
-/* светло-оранжевое неоновое свечение */
 @keyframes orangeGlow {
     0% {
         color: #ffb84d;
@@ -370,7 +367,6 @@ body.light .theme-toggle {
     text-shadow: 0 0 2px #000, 0 0 4px #111;
 }
 
-/* анимация чёрного/тёмного сияния */
 @keyframes darkGlow {
     0% {
         text-shadow: 0 0 2px #000, 0 0 4px #111;
@@ -389,7 +385,6 @@ body.light .theme-toggle {
     text-shadow: 0 0 2px #8a2be2, 0 0 6px #a855f7;
 }
 
-/* фиолетовое мерцание */
 @keyframes sdfgGlow {
     0% {
         color: #8a2be2;
@@ -405,7 +400,6 @@ body.light .theme-toggle {
     }
 }
 
-/* пульсация (увеличение/уменьшение) */
 @keyframes sdfgPulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -421,29 +415,29 @@ body.light .theme-toggle {
 
 <body>
 
-<!-- Боковая панель -->
+<!-- Бічна панель -->
 <div class="sidebar">
     <div td class="clansss"><h2>🛡️ Клан [_FORT]</div>
     <table>
-        <tr><td class="komand">Командующий</td><td td class="ofiix">Nastya1tsg</td></tr>
-        <tr><td class="zamss">Зам. командующего</td><td>Mr_Pr0r0k</td></tr>
-        <tr><td class="zamss">Зам. командующего</td><td>mistertvister777</td</tr>
-        <tr><td class="zamss">Зам. командующего</td><td>hunter___2002</td></tr>
-        <tr><td class="zamss">Зам. командующего</td><td>Rm_K80</td></tr>
-        <tr><td class="zamss">Зам. командующего</td><td>buburuzax_3981949</td></tr>
-        <tr><td class="ofii">Офицер штаба</td><td class="ofiix">Death_to_machines</td></tr>
-        <tr><td class="zamkomand">Командир подразделения</td><td>PHANTOM_STEAL</td></tr>
+        <tr><td class="komand">Командувач</td><td td class="ofiix">Nastya1tsg</td></tr>
+        <tr><td class="zamss">Заст. командувача</td><td>Mr_Pr0r0k</td></tr>
+        <tr><td class="zamss">Заст. командувача</td><td>mistertvister777</td</tr>
+        <tr><td class="zamss">Заст. командувача</td><td>hunter___2002</td></tr>
+        <tr><td class="zamss">Заст. командувача</td><td>Rm_K80</td></tr>
+        <tr><td class="zamss">Заст. командувача</td><td>buburuzax_3981949</td></tr>
+        <tr><td class="ofii">Офіцер штабу</td><td class="ofiix">Death_to_machines</td></tr>
+        <tr><td class="zamkomand">Командир підрозділу</td><td>PHANTOM_STEAL</td></tr>
     </table>
     <button id="musicToggle" class="join-btn" style="margin-top:10px;">
-    🔊 Выключить звук
+    🔊 Вимкнути звук
     </button>
 </div>
 
-<!-- Карточка -->
+<!-- Картка -->
 <div class="card">
 
     <div class="header">
-        <img src="muy/fort.png" alt="Аватар канала" class="server-icon">
+        <img src="muy/fort.png" alt="Аватар каналу" class="server-icon">
         <div class="server-name">
     <span class="sdfg">☤</span> <span class="sdfgs"></span> <span class="sdfg">☤</span>
 </div>
@@ -453,19 +447,19 @@ body.light .theme-toggle {
     </div>
 
     <div class="search">
-        <input id="search" placeholder="Поиск участника...">
+        <input id="search" placeholder="Пошук учасника...">
     </div>
 
     <div class="members" id="membersList">
-        Загрузка...
+        Завантаження...
     </div>
 
     <div class="footer">
         <a id="joinBtn" class="join-btn" target="_blank">
-            Присоединиться
+            Приєднатися
         </a>
         <div class="theme-toggle" id="themeToggle">
-            Переключить тему
+            Перемкнути тему
         </div>
     </div>
 
@@ -477,11 +471,10 @@ const apiUrl = `https://discord.com/api/guilds/${serverId}/widget.json`;
 
 let membersCache = [];
 
-// Загрузка участников
 async function loadMembers() {
     try {
         const res = await fetch(apiUrl);
-        if (!res.ok) throw new Error("widget недоступен");
+        if (!res.ok) throw new Error("віджет недоступний");
 
         const data = await res.json();
         document.getElementById("joinBtn").href = data.instant_invite || "#";
@@ -500,11 +493,10 @@ async function loadMembers() {
     } catch (e) {
         console.warn(e);
         document.getElementById("membersList").innerHTML =
-            "Виджет недоступен. Проверьте настройку в Discord.";
+            "Віджет недоступний. Перевірте налаштування Discord.";
     }
 }
 
-// Рендер участников
 function renderMembers(list) {
     const membersList = document.getElementById("membersList");
     membersList.innerHTML = "";
@@ -516,7 +508,7 @@ function renderMembers(list) {
 
         div.innerHTML = `
             <img src="${member.avatar_url || 'https://i.ibb.co/0Y4M0Kq/default.png'}">
-            ${member.username || 'Неизвестный'}
+            ${member.username || 'Невідомий'}
             <div class="status ${member.status || 'offline'}"></div>
         `;
 
@@ -524,7 +516,6 @@ function renderMembers(list) {
     });
 }
 
-// Поиск
 document.getElementById("search").addEventListener("input", function() {
     const term = this.value.toLowerCase();
     const filtered = membersCache.filter(m =>
@@ -533,51 +524,81 @@ document.getElementById("search").addEventListener("input", function() {
     renderMembers(filtered);
 });
 
-// Тема
 document.getElementById("themeToggle").onclick = () => {
     document.body.classList.toggle("light");
 };
 
-// Анимация кнопки
 const join = document.querySelector(".join-btn");
 join.addEventListener("mouseenter", () => join.style.transform = "scale(1.04)");
 join.addEventListener("mouseleave", () => join.style.transform = "scale(1)");
 
-// Старт
 loadMembers();
 setInterval(loadMembers, 30000);
 
 document.addEventListener("DOMContentLoaded", () => {
-    const text = "Боевая комната";
-    const el = document.querySelector(".sdfgs");
+    const music = document.getElementById("bgMusic");
+    const toggle = document.getElementById("musicToggle");
 
+    if (!music || !toggle) return;
+
+    music.volume = 0.2;
+    let isPlaying = true;
+
+    const updateButton = () => {
+        toggle.textContent = isPlaying ? "🔊 Вимкнути звук" : "🔈 Увімкнути звук";
+    };
+
+    toggle.addEventListener("click", () => {
+        if (isPlaying) music.pause();
+        else music.play().catch(() => {});
+        isPlaying = !isPlaying;
+        updateButton();
+    });
+
+    music.addEventListener("ended", () => {
+        if (isPlaying) {
+            music.currentTime = 0;
+            music.play().catch(() => {});
+        }
+    });
+
+    setInterval(() => {
+        if (isPlaying && music.paused) {
+            music.play().catch(() => {});
+        }
+    }, 3000);
+
+    updateButton();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const text = "Бойова кімната";
+    const el = document.querySelector(".sdfgs");
     let index = 0;
     let forward = true;
 
     function animate() {
         if (forward) {
-            el.textContent = text.substring(0, index);
-            index++;
+            el.textContent = text.slice(0, index++);
             if (index > text.length) {
                 forward = false;
                 setTimeout(animate, 1000);
                 return;
             }
         } else {
-            el.textContent = text.substring(0, index);
-            index--;
+            el.textContent = text.slice(0, index--);
             if (index < 0) {
                 forward = true;
                 setTimeout(animate, 500);
                 return;
             }
         }
-
-        setTimeout(animate, forward ? 120 : 80);
+        setTimeout(animate, forward ? 150 : 100);
     }
 
     animate();
-});</script>
+});
+</script>
 
 <audio id="bgMusic" autoplay loop>
     <source src="muy/fons.mp3" type="audio/mpeg">
