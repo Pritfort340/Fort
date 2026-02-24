@@ -472,13 +472,16 @@ const apiUrl = `https://discord.com/api/guilds/${serverId}/widget.json`;
 
 let membersCache = [];
 
+// ================= ЗАВАНТАЖЕННЯ УЧАСНИКІВ =================
 async function loadMembers() {
     try {
         const res = await fetch(apiUrl);
         if (!res.ok) throw new Error("віджет недоступний");
 
         const data = await res.json();
-        document.getElementById("joinBtn").href = data.instant_invite || "https://discord.com/channels/1432796984078499922/1475184454933676113";
+
+        // КНОПКА БІЛЬШЕ НЕ ЗМІНЮЄТЬСЯ
+        // Вона вже має статичне посилання в HTML
 
         membersCache = data.members || [];
         renderMembers(membersCache);
@@ -498,6 +501,7 @@ async function loadMembers() {
     }
 }
 
+// ================= ВІДОБРАЖЕННЯ УЧАСНИКІВ =================
 function renderMembers(list) {
     const membersList = document.getElementById("membersList");
     membersList.innerHTML = "";
@@ -517,6 +521,7 @@ function renderMembers(list) {
     });
 }
 
+// ================= ПОШУК =================
 document.getElementById("search").addEventListener("input", function() {
     const term = this.value.toLowerCase();
     const filtered = membersCache.filter(m =>
@@ -525,60 +530,36 @@ document.getElementById("search").addEventListener("input", function() {
     renderMembers(filtered);
 });
 
+// ================= ТЕМА =================
 document.getElementById("themeToggle").onclick = () => {
     document.body.classList.toggle("light");
 };
 
+// ================= АНІМАЦІЯ КНОПКИ =================
 const join = document.querySelector(".join-btn");
 join.addEventListener("mouseenter", () => join.style.transform = "scale(1.04)");
 join.addEventListener("mouseleave", () => join.style.transform = "scale(1)");
 
+// ================= ЗАПУСК =================
 loadMembers();
 setInterval(loadMembers, 30000);
 
+// ================= МУЗИКА =================
 document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("bgMusic");
-    const toggle = document.getElementById("musicToggle");
-
-    if (!music || !toggle) return;
+    if (!music) return;
 
     music.volume = 0.2;
-    let isPlaying = true;
-
-    const updateButton = () => {
-        toggle.textContent = isPlaying ? "🔊 Вимкнути звук" : "🔈 Увімкнути звук";
-    };
-
-    toggle.addEventListener("click", () => {
-        if (isPlaying) music.pause();
-        else music.play().catch(() => {});
-        isPlaying = !isPlaying;
-        updateButton();
-    });
-
-    music.addEventListener("ended", () => {
-        if (isPlaying) {
-            music.currentTime = 0;
-            music.play().catch(() => {});
-        }
-    });
-
-    setInterval(() => {
-        if (isPlaying && music.paused) {
-            music.play().catch(() => {});
-        }
-    }, 3000);
-
-    updateButton();
 });
 
+// ================= АНІМАЦІЯ НАЗВИ =================
 document.addEventListener("DOMContentLoaded", () => {
     const text = "Бойова кімната";
     const el = document.querySelector(".sdfgs");
     let index = 0;
     let forward = true;
 
-    el.textContent = ""; // очистка, чтобы не мигало
+    el.textContent = "";
 
     function animate() {
         if (forward) {
