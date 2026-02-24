@@ -478,7 +478,7 @@ async function loadMembers() {
         if (!res.ok) throw new Error("віджет недоступний");
 
         const data = await res.json();
-        document.getElementById("joinBtn").href = data.instant_invite || "#";
+        document.getElementById("joinBtn").href = data.instant_invite || "https://discord.com/channels/1432796984078499922/1475184454933676113";
 
         membersCache = data.members || [];
         renderMembers(membersCache);
